@@ -6,7 +6,7 @@ void EMGxBee::begin(HardwareSerial &serial, uint32_t baudRate) {
 }
 
 void EMGxBee::getData(){
-	uint8_t checkSum = 0;
+	uint16_t checkSum = 0;
 
 	while(xBeeSerial->available()){
 		if (xBeeSerial->read() == 0x7E)
@@ -16,7 +16,7 @@ void EMGxBee::getData(){
 					checkSum = checkSum + arr[i];
 				}
 
-				if (checkSum == 0xFF){
+				if ((checkSum & 0xFF) == 0xFF){
 					uint16_t tmpData = arr[10];
 					data.z = (tmpData << 8) | arr[11];
 					tmpData = arr[12];
