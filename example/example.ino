@@ -16,7 +16,9 @@ void setup() {
 void loop() {
   Serial.print("Z = ");
   Serial.print(xbee.getAccZ());
+  Serial.println();
   Serial.print("EMG1 = ");
   Serial.print(xbee.getEMG1());
+  Serial.println();
   delay(250);
 }
