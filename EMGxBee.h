@@ -5,10 +5,10 @@
 
 class EMGxBee {
 public:
-	~EMGxBee();
-
 	void begin(HardwareSerial &Serial, uint32_t baudRate);
 	void updateData();
+	virtual ~EMGxBee();
+
 	uint16_t getAccZ();
 	uint16_t getAccY();
 	uint16_t getAccX();
@@ -16,8 +16,8 @@ public:
 	uint16_t getEMG2();
 
 private:
-	struct{
-		uint16_t x,y,z;
+	struct {
+		uint16_t x, y, z;
 		uint16_t emg1, emg2;
 	} s_data;
 	HardwareSerial *xBeeSerial;
