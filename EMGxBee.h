@@ -12,17 +12,17 @@ public:
 	uint16_t getAccZ();
 	uint16_t getAccY();
 	uint16_t getAccX();
-	uint16_t getEMG1();
-	uint16_t getEMG2();
+	uint16_t getEmg1();
+	uint16_t getEmg2();
 
 private:
 	struct {
 		uint16_t x, y, z;
 		uint16_t emg1, emg2;
-	} s_data;
-	HardwareSerial *xBeeSerial;
+	} _sData;
+	HardwareSerial *_pSerial;
 
-	byte arr[21];
+	uint8_t arr[21];
 };
 
 #endif
