@@ -5,15 +5,15 @@
 
 class EMGxBee {
 public:
-	void begin(HardwareSerial &Serial, uint32_t baudRate);
-	void updateData();
+	void begin(HardwareSerial &Serial, uint32_t baudRate);		//establishes the connection between microcontroller and XBee
+	void updateData();		//update the value of accelerometer and emg channel if checksum is verified
 	virtual ~EMGxBee();
 
-	uint16_t getAccZ();
-	uint16_t getAccY();
-	uint16_t getAccX();
-	uint16_t getEmg1();
-	uint16_t getEmg2();
+	uint16_t getAccZ();		//return acceleration in z-axis
+	uint16_t getAccY();		//return acceleration in y-axis
+	uint16_t getAccX();		//return acceleration in x-axis
+	uint16_t getEmg1();		//return emg channel 1 value
+	uint16_t getEmg2();		//return emg channel 2 value
 
 private:
 	struct {
