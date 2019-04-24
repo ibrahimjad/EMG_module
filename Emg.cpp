@@ -1,31 +1,31 @@
-#include "EMGxBee.h"
+#include "Emg.h"
 
-void EMGxBee::begin(HardwareSerial &serial, uint32_t baudRate) {		//establishes the connection between microcontroller and XBee
+void Emg::begin(HardwareSerial &serial, uint32_t baudRate) {		//establishes the connection between microcontroller and XBee
 	_pSerial = &serial;
 	_pSerial->begin(baudRate);
 }
 
-uint16_t EMGxBee::getAccZ() {		//returns acceleration in z-axis
+uint16_t Emg::getAccZ() {		//returns acceleration in z-axis
 	return _sData.z;
 }
 
-uint16_t EMGxBee::getAccY() {		//returns acceleration in y-axis
+uint16_t Emg::getAccY() {		//returns acceleration in y-axis
 	return _sData.y;
 }
 
-uint16_t EMGxBee::getAccX() {		//returns acceleration in x-axis
+uint16_t Emg::getAccX() {		//returns acceleration in x-axis
 	return _sData.x;
 }
 
-uint16_t EMGxBee::getEmg1() {		//returns emg channel 1 value
+uint16_t Emg::getEmg1() {		//returns emg channel 1 value
 	return _sData.emg1;
 }
 
-uint16_t EMGxBee::getEmg2() {		//returns emg channel 2 value
+uint16_t Emg::getEmg2() {		//returns emg channel 2 value
 	return _sData.emg2;
 }
 
-void EMGxBee::updateData() {		//updates data when a new package is received
+void Emg::updateData() {		//updates data when a new package is received
 	while (_pSerial->available()) {		//check incoming data
 		if (_pSerial->read() == 0x7E)		//check the start of new packet
 			if (_pSerial->read() == 0x00 && _pSerial->read() == 0x14) {		//check that 14 bytes are being received
@@ -52,6 +52,6 @@ void EMGxBee::updateData() {		//updates data when a new package is received
 	}
 }
 
-EMGxBee::~EMGxBee() {
+Emg::~Emg() {
 	_pSerial->end();
 }

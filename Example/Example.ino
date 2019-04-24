@@ -1,6 +1,6 @@
-#include "EMGxBee.h"
+#include "Emg.h"
 
-EMGxBee xbee;
+Emg xbee;
 IntervalTimer xBeeTimer;
 
 void xBeeRead(){
@@ -18,7 +18,7 @@ void loop() {
   Serial.print(xbee.getAccZ());
   Serial.println();
   Serial.print("EMG1 = ");
-  Serial.print(xbee.getEMG1());
+  Serial.print(xbee.getEmg1());
   Serial.println();
   delay(250);
 }

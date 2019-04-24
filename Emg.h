@@ -3,11 +3,11 @@
 #ifndef EMGXBEE_H_
 #define EMGXBEE_H_
 
-class EMGxBee {
+class Emg {
 public:
 	void begin(HardwareSerial &Serial, uint32_t baudRate);		//establishes the connection between microcontroller and XBee
 	void updateData();		//update the value of accelerometer and emg channel if checksum is verified
-	virtual ~EMGxBee();
+	virtual ~Emg();
 
 	uint16_t getAccZ();		//return acceleration in z-axis
 	uint16_t getAccY();		//return acceleration in y-axis
