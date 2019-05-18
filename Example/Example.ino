@@ -1,24 +1,24 @@
 #include "Emg.h"
 
-Emg xbee;
-IntervalTimer xBeeTimer;
+Emg module;
+IntervalTimer timer;
 
-void xBeeRead(){
-  xbee.updateData();
+void readFromModule(){
+  module.updateData();
 }
 
 void setup() {
   Serial.begin(9600);
-  xbee.begin(Serial1, 115200);
-  xBeeTimer.begin(xBeeRead, 10000);
+  module.begin(Serial1, 115200);
+  timer.begin(readFromModule, 10000);
 }
 
 void loop() {
   Serial.print("Z = ");
-  Serial.print(xbee.getAccZ());
+  Serial.print(module.getAccZ());
   Serial.println();
   Serial.print("EMG1 = ");
-  Serial.print(xbee.getEmg1());
+  Serial.print(module.getEmg1());
   Serial.println();
   delay(250);
 }
